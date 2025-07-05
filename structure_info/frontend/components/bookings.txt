@@ -1,0 +1,5 @@
+├── BookingCard
+│   ├── BookingSummary
+│   ├── PaymentForm
+│   └── BookingConfirmation
+│

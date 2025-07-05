@@ -1,0 +1,19 @@
+FUNCTION registerUser(email, password, firstName, lastName, phone):
+    VALIDATE input data
+    CHECK if email already exists
+    HASH password
+    CREATE user in database with role 'customer'
+    SEND confirmation email
+    RETURN success/error message
+
+FUNCTION loginUser(email, password):
+    VALIDATE credentials
+    CHECK user exists and password matches
+    CREATE session token
+    REDIRECT based on user role
+    RETURN user data and token
+
+FUNCTION logoutUser():
+    INVALIDATE session token
+    CLEAR user data from storage
+    REDIRECT to homepage

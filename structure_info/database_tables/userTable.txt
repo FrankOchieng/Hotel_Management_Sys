@@ -1,0 +1,8 @@
+-id (UUID, primary key)
+- email (string, unique)
+- password (hashed string)
+- role (enum: 'customer', 'admin', 'staff')
+- first_name (string)
+- last_name (string)
+- phone (string)
+- created_at (timestamp)

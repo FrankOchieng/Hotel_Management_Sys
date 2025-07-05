@@ -1,0 +1,25 @@
+FUNCTION searchAvailableRooms(checkIn, checkOut, guests):
+    CALCULATE date range
+    QUERY rooms WHERE:
+        - capacity >= guests
+        - status = 'available'
+        - NOT EXISTS conflicting bookings in date range
+    RETURN available rooms with pricing
+
+FUNCTION calculateTotalPrice(roomId, checkIn, checkOut, services):
+    GET room price per night
+    CALCULATE nights = checkOut - checkIn
+    roomTotal = room.price * nights
+    
+    servicesTotal = 0
+    FOR each service in services:
+        servicesTotal += service.price * service.quantity
+    
+    RETURN roomTotal + servicesTotal
+
+FUNCTION checkRoomAvailability(roomId, checkIn, checkOut):
+    QUERY bookings WHERE:
+        - room_id = roomId
+        - booking_status NOT IN ('cancelled')
+        - date ranges overlap
+    RETURN true if no conflicts, false otherwise

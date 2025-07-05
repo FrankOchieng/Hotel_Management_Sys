@@ -1,0 +1,65 @@
+"""
+BOOKING RULES
+- Check-in date must be >= today
+- Check-out date must be > check-in date
+- Maximum booking duration: 30 days
+- Minimum advance booking: 2 hours
+- Cancellation allowed up to 24 hours before check-in
+"""
+"""
+PAYMENT RULES:
+- Full payment required at booking
+- Refund policy: 100% if cancelled 48+ hours, 50% if 24-48 hours, 0% if <24 hours
+- Failed payments auto-cancel booking after 1 hour
+"""
+FUNCTION createBooking(userId, roomId, checkIn, checkOut, services, paymentMethod):
+    BEGIN TRANSACTION
+    
+    VALIDATE dates (checkIn < checkOut, checkIn >= today)
+    CHECK room availability for dates
+    CALCULATE total amount
+    
+    CREATE booking record with status 'pending'
+    
+    IF services provided:
+        FOR each service:
+            CREATE booking_service record
+    
+    INITIATE payment process
+    IF payment successful:
+        UPDATE booking status to 'confirmed'
+        UPDATE payment status to 'paid'
+        SEND confirmation email
+    ELSE:
+        ROLLBACK transaction
+        RETURN payment error
+    
+    COMMIT TRANSACTION
+    RETURN booking confirmation
+
+FUNCTION cancelBooking(bookingId, userId):
+    VALIDATE user owns booking OR user is admin
+    CHECK booking status allows cancellation
+    
+    CALCULATE refund amount based on cancellation policy
+    
+    UPDATE booking status to 'cancelled'
+    IF refund > 0:
+        PROCESS refund through payment gateway
+        UPDATE payment status to 'refunded'
+    
+    SEND cancellation confirmation email
+    RETURN cancellation details
+
+FUNCTION modifyBooking(bookingId, newDates, newServices):
+    VALIDATE modification is allowed
+    CHECK new dates availability
+    CALCULATE price difference
+    
+    IF additional payment needed:
+        PROCESS additional payment
+    ELSE IF refund due:
+        PROCESS partial refund
+    
+    UPDATE booking details
+    SEND modification confirmation

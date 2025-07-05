@@ -1,0 +1,6 @@
+- id (UUID, primary key)
+- name (string)
+- description (text)
+- price (decimal)
+- category (enum: 'food', 'spa', 'transport', 'entertainment')
+- availability (boolean)

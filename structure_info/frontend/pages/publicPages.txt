@@ -1,0 +1,6 @@
+├── HomePage (/)
+│   ├── RoomsPage (/rooms)
+│   ├── ServicesPage (/services)  
+│   ├── LoginPage (/login)
+│   └── RegisterPage (/register)
+│

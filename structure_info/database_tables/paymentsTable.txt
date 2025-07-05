@@ -1,0 +1,7 @@
+- id (UUID, primary key)
+- booking_id (UUID, foreign key to BOOKINGS)
+- amount (decimal)
+- payment_method (enum: 'card', 'cash', 'bank_transfer')
+- payment_status (enum: 'pending', 'completed', 'failed', 'refunded')
+- stripe_payment_id (string, nullable)
+- created_at (timestamp)

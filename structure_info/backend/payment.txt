@@ -1,0 +1,23 @@
+FUNCTION processPayment(bookingId, amount, paymentMethod):
+    CREATE payment record with status 'pending'
+    
+    SWITCH paymentMethod:
+        CASE 'card':
+            CREATE Stripe checkout session
+            RETURN checkout URL
+        CASE 'cash':
+            MARK as pending for front desk processing
+        CASE 'bank_transfer':
+            GENERATE payment instructions
+    
+    RETURN payment details
+
+FUNCTION handlePaymentWebhook(stripeEvent):
+    SWITCH event.type:
+        CASE 'checkout.session.completed':
+            UPDATE payment status to 'completed'
+            UPDATE booking status to 'confirmed'
+            SEND booking confirmation email
+        CASE 'payment_intent.payment_failed':
+            UPDATE payment status to 'failed'
+            CANCEL booking if no retry

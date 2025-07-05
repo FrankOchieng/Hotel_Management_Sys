@@ -1,0 +1,28 @@
+FUNCTION getDashboardStats():
+    totalBookings = COUNT bookings this month
+    totalRevenue = SUM payments this month
+    occupancyRate = (occupied rooms / total rooms) * 100
+    pendingBookings = COUNT bookings WHERE status = 'pending'
+    
+    RETURN dashboard metrics
+
+FUNCTION manageRoom(action, roomData):
+    SWITCH action:
+        CASE 'create':
+            VALIDATE room data
+            CREATE room record
+        CASE 'update':
+            VALIDATE changes don't conflict with existing bookings
+            UPDATE room record
+        CASE 'delete':
+            CHECK no future bookings exist
+            SOFT DELETE room record
+
+FUNCTION generateReports(reportType, dateRange):
+    SWITCH reportType:
+        CASE 'revenue':
+            RETURN revenue breakdown by room type, services
+        CASE 'occupancy':
+            RETURN occupancy rates by date, room type
+        CASE 'customer':
+            RETURN customer booking patterns, preferences

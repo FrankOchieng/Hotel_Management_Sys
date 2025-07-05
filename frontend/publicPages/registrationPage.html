@@ -1,0 +1,86 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width = device-width, initial-scale =1,0">
+        <title>Register</title>
+        <link rel="stylesheet" src="registrationPage.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-container">
+                <a href="homepage.html" class="logo">Luxe<span>Stay</span></a>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="roomsPage.html">Rooms</a></li>
+                    <li><a href="servicePage.html">Services</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                    <li><a href="loginPage.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="register-header">
+                <h1>Join DeltaStay</h1>
+                <p>Create your account and start your luxury journey</p>
+            </div>
+
+            <div class="form-container">
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+
+                <div class="login-link">
+                    <p>Already have an account? <a href="loginPage.html">Sign in here</a></p>
+                </div>
+
+                <div class="divider">
+                    <span>Or sign up with</span>
+                </div>
+
+                <div class="social-buttons">
+                    <button class="social-btn" onclick="socialSignup('Google')">Google</button>
+                    <button class="social-btn" onclick="socialSignup('Facebook')">Facebook</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </body>
+    <script src="registrationPage.js"></script>
+</html>

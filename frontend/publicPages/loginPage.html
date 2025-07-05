@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - LuxeStay</title>
+        <link rel="stylesheet" src="loginPage.css">
+    </head>
+    <body>
+        <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Luxe<span>Stay</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="active">Login</a></li>
+            </ul>
+        </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="login-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your LuxeStay account</p>
+                </div>
+
+                <div class="form-container">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <div class="form-options">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Sign In</button>
+                    </form>
+
+                    <div class="signup-link">
+                        <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+                    </div>
+
+                    <div class="divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <div class="social-buttons">
+                        <button class="social-btn" onclick="socialLogin('Google')">Google</button>
+                        <button class="social-btn" onclick="socialLogin('Facebook')">Facebook</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="loginPage.js"></script>
+    </body>

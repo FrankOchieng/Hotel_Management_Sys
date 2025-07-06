@@ -1,0 +1,36 @@
+Authentication:
+POST /auth/register
+POST /auth/login
+POST /auth/logout
+GET /auth/profile
+
+Rooms:
+GET /rooms (with filters: dates, guests, type, price range)
+GET /rooms/:id
+GET /rooms/:id/availability
+
+Bookings:
+POST /bookings (create new booking)
+GET /bookings (user's bookings)
+GET /bookings/:id
+PUT /bookings/:id (modify booking)
+DELETE /bookings/:id (cancel booking)
+
+Services:
+GET /services
+GET /services/:category
+
+Payments:
+POST /payments/create-checkout-session
+POST /payments/webhook (Stripe webhook)
+GET /payments/:bookingId
+
+Admin:
+GET /admin/dashboard
+GET /admin/bookings
+PUT /admin/bookings/:id/status
+GET /admin/rooms
+POST /admin/rooms
+PUT /admin/rooms/:id
+DELETE /admin/rooms/:id
+GET /admin/reports/:type

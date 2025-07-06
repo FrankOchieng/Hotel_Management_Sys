@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login / Register</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Inter Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" src="services.css">
+    </head>
+    <body class="min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm py-4">
+        <div class="container flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">Hotel Booking</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="nav-link text-blue-600 hover:text-blue-800">Home</a></li>
+                    <li><a href="auth.html" class="nav-link text-blue-600 hover:text-blue-800">Login/Register</a></li>
+                    <li><a href="rooms.html" class="nav-link text-blue-600 hover:text-blue-800">Rooms</a></li>
+                    <li><a href="bookings.html" class="nav-link text-blue-600 hover:text-blue-800">My Bookings</a></li>
+                    <li><a href="admin.html" class="nav-link text-blue-600 hover:text-blue-800">Admin Panel</a></li>
+                    <li><button id="logoutBtn" class="nav-link text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container py-8">
+        <h2 class="text-3xl font-semibold text-gray-700 mb-6">Our Available Services</h2>
+
+        <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p class="text-center text-gray-500 col-span-full">Loading services...</p>
+        </div>
+        <div id="services-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="container text-center text-sm">
+            &copy; 2025 Hotel Booking App. All rights reserved.
+        </div>
+    </footer>
+        
+        <script src="services.js"></script>
+    </body>
+</html>

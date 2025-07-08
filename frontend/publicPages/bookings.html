@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login / Register</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Inter Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="bookings.css">
+    </head>
+    <body class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm py-4">
+        <div class="container flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">Hotel Booking</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="homepage.html" class="nav-link text-blue-600 hover:text-blue-800">Home</a></li>
+                    <li><a href="roomsPage.html" class="nav-link text-blue-600 hover:text-blue-800">Rooms</a></li>
+                    <li><a href="servicePage.html" class="nav-link text-blue-600 hover:text-blue-800">Services</a></li>
+                    <li><a href="loginPage.html" class="nav-link text-blue-600 hover:text-blue-800">Login</a></li>
+                    <li><button id="logoutBtn" class="nav-link text-red-600 hover:text-red-800 bg-red-100 hover:bg-red-200">Logout</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container py-8">
+        <h2 class="text-3xl font-semibold text-gray-700 mb-6">My Bookings</h2>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4">Create New Booking</h3>
+            <form id="create-booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="create-room-id" class="block text-sm font-medium text-gray-700">Room ID</label>
+                    <input type="text" id="create-room-id" class="form-input" placeholder="e.g., 123e4567-e89b-12d3-a456-426614174000" required>
+                </div>
+                <div>
+                    <label for="create-check-in-date" class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                    <input type="date" id="create-check-in-date" class="form-input" required>
+                </div>
+                <div>
+                    <label for="create-check-out-date" class="block text-sm font-medium text-gray-700">Check-out Date</label>
+                    <input type="date" id="create-check-out-date" class="form-input" required>
+                </div>
+                <div>
+                    <label for="create-payment-method" class="block text-sm font-medium text-gray-700">Payment Method</label>
+                    <select id="create-payment-method" class="form-input" required>
+                        <option value="card">Card</option>
+                        <option value="cash">Cash</option>
+                        <option value="bank_transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="create-special-requests" class="block text-sm font-medium text-gray-700">Special Requests (Optional)</label>
+                    <textarea id="create-special-requests" class="form-input h-24"></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="text-md font-medium text-gray-700 mb-2">Services (Optional)</h4>
+                    <div id="create-services-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <!-- Services will be loaded here dynamically -->
+                        <p>Loading services...</p>
+                    </div>
+                </div>
+                <div class="md:col-span-2 flex justify-end">
+                    <button type="submit" class="form-button">Create Booking</button>
+                </div>
+            </form>
+            <div id="create-booking-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">Your Existing Bookings</h3>
+        <div id="my-bookings-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p class="text-center text-gray-500 col-span-full">Loading your bookings...</p>
+        </div>
+        <div id="bookings-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="container text-center text-sm">
+            &copy; 2025 Hotel Booking App. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Modals for Modify and Details -->
+    <div id="modifyBookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modifyBookingModal')">&times;</span>
+            <h3 class="text-xl font-semibold mb-4">Modify Booking</h3>
+            <form id="modify-booking-form" class="space-y-4">
+                <input type="hidden" id="modify-booking-id">
+                <div>
+                    <label for="modify-check-in-date" class="block text-sm font-medium text-gray-700">New Check-in Date</label>
+                    <input type="date" id="modify-check-in-date" class="form-input" required>
+                </div>
+                <div>
+                    <label for="modify-check-out-date" class="block text-sm font-medium text-gray-700">New Check-out Date</label>
+                    <input type="date" id="modify-check-out-date" class="form-input" required>
+                </div>
+                <div>
+                    <h4 class="text-md font-medium text-gray-700 mb-2">New Services (Optional)</h4>
+                    <div id="modify-services-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <!-- Services will be loaded here dynamically -->
+                    </div>
+                </div>
+                <button type="submit" class="form-button">Save Changes</button>
+            </form>
+            <div id="modify-booking-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+        </div>
+    </div>
+
+    <div id="bookingDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('bookingDetailsModal')">&times;</span>
+            <h3 class="text-xl font-semibold mb-4">Booking Details</h3>
+            <div id="booking-details-content" class="space-y-2 text-gray-700">
+                <!-- Details will be loaded here -->
+            </div>
+            <div id="details-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+        </div>
+    </div>
+        <script src="bookings.js"></script>
+    </body>
+</html>

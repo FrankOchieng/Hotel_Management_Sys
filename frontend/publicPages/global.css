@@ -1,0 +1,222 @@
+/* global.css */
+
+:root {
+    /* Color Palette Variables - GLOBAL */
+    --color-primary-background: #FFFFF3;
+    --color-secondary-warm: #DEB3AD;
+    --color-subtle-opulence: #F4EBD0;
+    --color-accent-maroon: #4B0000;
+    --color-neutral-stone: #E0D7C7;
+    --color-dark-text: #333;
+
+    /* Font Palette Variables - GLOBAL */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans-serif: 'Lato', sans-serif;
+    --font-script: 'Great Vibes', cursive;
+}
+
+/* --- Base Styles - GLOBAL --- */
+body {
+    font-family: var(--font-sans-serif);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-primary-background);
+    color: var(--color-dark-text);
+    line-height: 1.6;
+}
+
+/* --- Navigation Bar - GLOBAL --- */
+nav {
+    background-color: var(--color-primary-background);
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.logo {
+    font-family: var(--font-script);
+    font-size: 2.1em;
+    font-weight: normal;
+    color: var(--color-accent-maroon);
+    text-decoration: none;
+    letter-spacing: 0;
+}
+
+.logo span {
+    color: var(--color-dark-text);
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-family: var(--font-sans-serif);
+    text-decoration: none;
+    color: var(--color-dark-text);
+    font-size: 1.1em;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-secondary-warm);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent-maroon);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--color-accent-maroon);
+    font-weight: 700;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+    background-color: var(--color-secondary-warm);
+}
+
+/* --- Hamburger Menu Styles - GLOBAL --- */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-dark-text);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* State for when menu is open (bars transform into an 'X') */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* --- Global Button Styles - GLOBAL --- */
+.hero-buttons { /* This container might be specific to hero, but base btn styles are global */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-buttons .btn {
+    font-family: var(--font-sans-serif);
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-maroon);
+    color: var(--color-primary-background);
+    border: 2px solid var(--color-accent-maroon);
+}
+
+.btn-primary:hover {
+    background-color: #6a0000;
+    border-color: #6a0000;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-accent-maroon);
+    color: var(--color-accent-maroon);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-accent-maroon);
+    color: var(--color-primary-background);
+}
+
+/* --- Responsive Adjustments - GLOBAL for shared elements --- */
+@media (max-width: 768px) {
+    /* Navbar for small screens */
+    .nav-container {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--color-neutral-stone);
+        position: absolute;
+        top: 80px; /* Adjust based on your nav height */
+        left: 0;
+        right: 0;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .nav-links.active {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        font-family: var(--font-sans-serif);
+        padding: 10px 0;
+        display: block;
+        font-size: 1.1em;
+    }
+}

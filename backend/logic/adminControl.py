@@ -4,7 +4,7 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from sqlalchemy import func
 from datetime import datetime, timedelta
-from models import db, User, Room, Booking, Payment, RoomType, RoomStatus, BookingStatus, PaymentStatus, UserRole, Service, ReportType
+from models import BookingService, db, User, Room, Booking, Payment, RoomType, RoomStatus, BookingStatus, PaymentStatus, UserRole, Service, ReportType
 from utils import admin_required, send_email # Assuming utils.py for helpers and decorators
 
 admin_bp = Blueprint('admin', __name__)

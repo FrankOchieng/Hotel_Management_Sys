@@ -4,7 +4,7 @@ from flask import Blueprint, request, jsonify
 import stripe
 from models import db, Booking, Payment, PaymentStatus, BookingStatus, PaymentMethod
 from config import Config
-from utils import send_email # Assuming send_email utility
+from utils import send_email # Assuming send_email utility 
 
 payments_bp = Blueprint('payments', __name__)
 

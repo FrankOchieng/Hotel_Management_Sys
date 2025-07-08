@@ -10,7 +10,7 @@ from sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# Define  Enums for various fields
+# Define  Enums for various fields 
 class UserRole(Enum):
     CUSTOMER = 'customer'
     ADMIN = 'admin'

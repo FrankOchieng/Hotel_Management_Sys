@@ -1,10 +1,11 @@
 # bookings.py 
 
+from decimal import Decimal
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from datetime import datetime, timedelta
 from sqlalchemy import or_, and_
-from models import db, Booking, Room, Service, BookingService, BookingStatus, PaymentStatus, UserRole
+from models import Payment, PaymentMethod, db, Booking, Room, Service, BookingService, BookingStatus, PaymentStatus, UserRole
 from paymentsHandlers import process_payment_function, refund_payment # Assuming these are functions from payments.py
 from utils import calculate_total_price, send_email, is_admin # Assuming utils.py for helpers
 

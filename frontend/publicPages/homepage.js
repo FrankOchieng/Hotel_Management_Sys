@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// scrolling for internal links
+//  scrolling for internal links
+
 document.querySelectorAll('a[href^=#]').foeEach(anchor => {
     anchor.addEventListener('click', function (e){
         e.preventDefault();
@@ -23,4 +24,4 @@ document.querySelectorAll('a[href^=#]').foeEach(anchor => {
             });
         }
     });
-});
+})  ;

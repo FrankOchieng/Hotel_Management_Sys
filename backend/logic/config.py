@@ -7,7 +7,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'a_very_secret_key_that_should_be_changed')
 
     # Database configuration for MySQL
-    # Format: mysql+mysqlconnector://user:password@host/dbname
+    # Format: mysql+mysqlconnector://user:password@host/dbname 
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL',
         'mysql+mysqlconnector://user:password@localhost/hotel_booking_db'

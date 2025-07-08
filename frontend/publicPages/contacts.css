@@ -1,9 +1,9 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background: #f4f6f8;
+    background: #690ae6;
 }
-
+ 
 nav {
     background: #222;
     color: #fff;
@@ -91,4 +91,15 @@ main {
 .contact-form img {
     display: block;
     margin: 0 auto;
+}
+
+.contact-form{
+    transform: rotateX('angle');
+    transition: ease-in-out;
+}
+
+.sms{
+    transition: ease-in-out;
+    box-shadow: #eab308;
+    transition-duration: 5s;
 }

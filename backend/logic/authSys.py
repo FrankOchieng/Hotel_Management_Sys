@@ -7,7 +7,7 @@ import jwt
 from datetime import datetime, timedelta
 from models import db, User, UserRole
 from config import Config
-from utils import send_email # Assuming a utils.py for email sending
+from utils import send_email # Assuming a  utils.py for email sending
 
 auth_bp = Blueprint('auth', __name__)
 

@@ -1,13 +1,27 @@
- <!Doctype html>
- <html>
+<!Doctype html>
+<html>
     <head>
         <meta charset="UTF-8">
+<<<<<<< HEAD
         <meta name="viewport" content="width=device-width  initial-scale=1-0">
         <title>Rooms</title>
+=======
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rooms - LuxeStay</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="global.css">
+>>>>>>> 84b14159 (Frontend new look-public pages)
         <link rel="stylesheet" href="roomsPage.css">
     </head>
     <body>
         <nav>
+<<<<<<< HEAD
         <div class="nav-container">
             <a href="homepage.html" class="logo">Luxe<span>Stay</span></a>
             <ul class="nav-links">
@@ -20,20 +34,148 @@
             </ul>
         </div>
     </nav>
+=======
+            <div class="nav-container">
+                <a href="homepage.html" class="logo">Luxe<span>Stay</span></a>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="roomsPage.html" class="active">Rooms</a></li>
+                    <li><a href="servicePage.html">Services</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                    <li><a href="loginPage.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+>>>>>>> 84b14159 (Frontend new look-public pages)
 
-    <main class="main-content">
-        <div class="container">
-            <div class="page-header">
-                <h1>Our Luxury Rooms</h1>
-                <p>Choose from our collection of carefully curated accommodations, each designed to provide an unforgettable experience.</p>
+        <main class="main-content">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Our Luxury Rooms</h1>
+                    <p>Choose from our collection of carefully curated accommodations, each designed to provide an unforgettable experience.</p>
+                </div>
             </div>
 
-            <div class="rooms-grid" id="roomsGrid">
-                <!-- Rooms will be populated by JavaScript -->
-            </div>
-        </div>
-    </main>
+            <section class="room-showcase-container" id="roomShowcase">
+                <div class="room-section">
+                    <div class="room-image-area">
+                        <img src="./images/room-placeholder-1.jpg" alt="Presidential Suite">
+                    </div>
+                    <div class="room-details-area">
+                        <h2 class="room-title">Presidential Suite</h2>
+                        <p class="room-description">Indulge in unparalleled luxury within our grand Presidential Suite, offering panoramic city views, a private living area, and bespoke services. Designed for ultimate comfort and sophistication.</p>
+                        <ul class="room-features">
+                            <li><i class="fa-solid fa-bed"></i> King Bed</li>
+                            <li><i class="fa-solid fa-users"></i> 4 Guests</li>
+                            <li><i class="fa-solid fa-bath"></i> Jacuzzi & Rain Shower</li>
+                            <li><i class="fa-solid fa-square-parking"></i> Valet Parking</li>
+                        </ul>
+                        <div class="room-price-info">
+                            <span class="price-from">Starting from</span>
+                            <span class="price-value">$950</span>
+                            <span class="price-per-night">/ night</span>
+                        </div>
+                        <a href="#" class="btn btn-primary room-btn"><i class="fa-solid fa-magnifying-glass"></i> View Details & Book</a>
+                    </div>
+                </div>
 
+                <div class="room-section reverse-layout">
+                    <div class="room-image-area">
+                        <img src="./images/room-placeholder-2.jpg" alt="Executive Deluxe Room">
+                    </div>
+                    <div class="room-details-area">
+                        <h2 class="room-title">Executive Deluxe Room</h2>
+                        <p class="room-description">Perfect for business or leisure, our Executive Deluxe Room blends modern amenities with classic comfort. Enjoy ergonomic workspaces, high-speed Wi-Fi, and serene garden views.</p>
+                        <ul class="room-features">
+                            <li><i class="fa-solid fa-bed"></i> Queen Bed</li>
+                            <li><i class="fa-solid fa-users"></i> 2 Guests</li>
+                            <li><i class="fa-solid fa-wifi"></i> High-Speed Wi-Fi</li>
+                            <li><i class="fa-solid fa-mug-saucer"></i> Complimentary Coffee</li>
+                        </ul>
+                        <div class="room-price-info">
+                            <span class="price-from">Starting from</span>
+                            <span class="price-value">$420</span>
+                            <span class="price-per-night">/ night</span>
+                        </div>
+                        <a href="#" class="btn btn-primary room-btn"><i class="fa-solid fa-magnifying-glass"></i> View Details & Book</a>
+                    </div>
+                </div>
+
+                <div class="room-section">
+                    <div class="room-image-area">
+                        <img src="./images/room-placeholder-3.jpg" alt="Grand Ocean View">
+                    </div>
+                    <div class="room-details-area">
+                        <h2 class="room-title">Grand Ocean View</h2>
+                        <p class="room-description">Awaken to the soothing sounds of waves in our Grand Ocean View room. Featuring a private balcony, a spacious layout, and direct beach access for an unforgettable coastal escape.</p>
+                        <ul class="room-features">
+                            <li><i class="fa-solid fa-bed"></i> King Bed</li>
+                            <li><i class="fa-solid fa-users"></i> 2 Guests</li>
+                            <li><i class="fa-solid fa-water"></i> Oceanfront Balcony</li>
+                            <li><i class="fa-solid fa-sun"></i> Beach Access</li>
+                        </ul>
+                        <div class="room-price-info">
+                            <span class="price-from">Starting from</span>
+                            <span class="price-value">$680</span>
+                            <span class="price-per-night">/ night</span>
+                        </div>
+                        <a href="#" class="btn btn-primary room-btn"><i class="fa-solid fa-magnifying-glass"></i> View Details & Book</a>
+                    </div>
+                </div>
+
+                <div class="room-section reverse-layout">
+                    <div class="room-image-area">
+                        <img src="./images/room-placeholder-4.jpg" alt="Family interconnecting Suite">
+                    </div>
+                    <div class="room-details-area">
+                        <h2 class="room-title">Family Interconnecting Suite</h2>
+                        <p class="room-description">Designed for families, this spacious suite offers two interconnecting rooms, ensuring privacy for adults and fun for kids. Enjoy ample space and tailored amenities for all ages.</p>
+                        <ul class="room-features">
+                            <li><i class="fa-solid fa-bed"></i> King & Twin Beds</li>
+                            <li><i class="fa-solid fa-users"></i> 6 Guests</li>
+                            <li><i class="fa-solid fa-puzzle-piece"></i> Kids Play Area</li>
+                            <li><i class="fa-solid fa-utensils"></i> Mini Kitchenette</li>
+                        </ul>
+                        <div class="room-price-info">
+                            <span class="price-from">Starting from</span>
+                            <span class="price-value">$790</span>
+                            <span class="price-per-night">/ night</span>
+                        </div>
+                        <a href="#" class="btn btn-primary room-btn"><i class="fa-solid fa-magnifying-glass"></i> View Details & Book</a>
+                    </div>
+                </div>
+
+                <div class="room-section">
+                    <div class="room-image-area">
+                        <img src="./images/room-placeholder-5.jpg" alt="Penthouse Loft">
+                    </div>
+                    <div class="room-details-area">
+                        <h2 class="room-title">Penthouse Loft</h2>
+                        <p class="room-description">Experience elevated living in our Penthouse Loft. A split-level design with a grand living space, private terrace, and personalized concierge service for an exclusive retreat.</p>
+                        <ul class="room-features">
+                            <li><i class="fa-solid fa-bed"></i> Super King Bed</li>
+                            <li><i class="fa-solid fa-users"></i> 2 Guests</li>
+                            <li><i class="fa-solid fa-city"></i> Rooftop Terrace</li>
+                            <li><i class="fa-solid fa-bell-concierge"></i> Concierge Service</li>
+                        </ul>
+                        <div class="room-price-info">
+                            <span class="price-from">Starting from</span>
+                            <span class="price-value">$1200</span>
+                            <span class="price-per-night">/ night</span>
+                        </div>
+                        <a href="#" class="btn btn-primary room-btn"><i class="fa-solid fa-magnifying-glass"></i> View Details & Book</a>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <script src="homepage.js"></script>
+        <script src="roomsPage.js"></script>
     </body>
-    <script src="roomsPage.js"></script>
- </html>
+</html>

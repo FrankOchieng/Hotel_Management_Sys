@@ -1,3 +1,4 @@
+"""
 -- Table: payments (from payments.sql)
 -- id int auto_increment primary key,
 -- booking_id int,
@@ -29,6 +30,9 @@ WHERE booking_id = 1 AND pay_status = 'pending';
 DELETE FROM payments
 WHERE id = 1; -- Replace 1 with actual payment ID
 ```python
+
+"""
+
 import mysql.connector
 from datetime import datetime
 

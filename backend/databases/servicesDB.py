@@ -1,3 +1,4 @@
+"""
 -- Table: serv_table (from services.sql)
 -- serv_name varchar (50) not null,
 -- category varchar(30) not null,
@@ -30,6 +31,9 @@ WHERE serv_name = 'Spa Massage';
 DELETE FROM serv_table
 WHERE serv_name = 'Spa Massage';
 ```python
+
+"""
+
 import mysql.connector
 
 db_config = {

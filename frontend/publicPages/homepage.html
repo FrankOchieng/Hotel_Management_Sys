@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DELTA HOTEL</title>
-        <link rel="stylesheet" href="homepage.css">
+        <link rel="stylesheet" src="homepage.css">
     </head>
     <body>
         <nav>
             <div class="nav-container" position="fixed" display="fixed">
                 <a href="homepage.html" class="logo">Delta<span>Stay</span></a>
-                <ul class="nav-links">
-                    <li><a href="homepage.html" class="active">Home</a></li>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links" id="navLinks"> <li><a href="homepage.html" class="active">Home</a></li>
                     <li><a href="roomsPage.html">Rooms</a></li>
                     <li><a href="servicePage.html">Services</a></li>
                     <li><a href="bookings.html">Bookings</a></li>
@@ -57,7 +61,8 @@
             </section>
         </main>
 
+        <script src="homepage.js"></script>
     </body>
-    <script href="homepage.js">  
+    <script src="homepage.js">  
     </script>
 </html>

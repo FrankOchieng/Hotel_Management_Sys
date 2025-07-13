@@ -1,93 +1,75 @@
- // Services data
-        const services = [
-            {
-                id: 1,
-                title: 'Spa & Wellness',
-                description: 'Rejuvenate your body and soul with our premium spa treatments and wellness programs.',
-                icon: '🧘',
-                features: ['Massage Therapy', 'Facial Treatments', 'Aromatherapy', 'Yoga Classes']
-            },
-            {
-                id: 2,
-                title: 'Fine Dining',
-                description: 'Experience culinary excellence with our world-class restaurants and room service.',
-                icon: '🍽️',
-                features: ['Michelin Star Restaurant', '24/7 Room Service', 'Wine Cellar', 'Private Chef']
-            },
-            {
-                id: 3,
-                title: 'Concierge Services',
-                description: 'Let our dedicated concierge team handle all your needs and special requests.',
-                icon: '🎩',
-                features: ['Travel Planning', 'Event Tickets', 'Transportation', 'Personal Shopping']
-            },
-            {
-                id: 4,
-                title: 'Business Center',
-                description: 'State-of-the-art facilities for all your business and conference needs.',
-                icon: '💼',
-                features: ['Meeting Rooms', 'Video Conferencing', 'Business Lounge', 'Secretary Services']
-            },
-            {
-                id: 5,
-                title: 'Recreation & Entertainment',
-                description: 'Enjoy our premium recreational facilities and entertainment options.',
-                icon: '🏊',
-                features: ['Swimming Pool', 'Fitness Center', 'Tennis Court', 'Live Entertainment']
-            },
-            {
-                id: 6,
-                title: 'VIP Services',
-                description: 'Exclusive services for our most distinguished guests.',
-                icon: '👑',
-                features: ['Airport Transfers', 'Butler Service', 'Private Events', 'Helicopter Tours']
-            }
-        ];
+document.addEventListener('DOMContentLoaded', function() {
+    // Array to hold your service data
+    const services = [
+        {
+            iconClass: 'fas fa-concierge-bell',
+            title: '24/7 Concierge Service',
+            description: 'Our dedicated concierge team is available around the clock to assist with any request, from dining reservations to bespoke experiences.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-utensils',
+            title: 'Gourmet Dining & Room Service',
+            description: 'Savor exquisite culinary delights at our signature restaurants or enjoy a gourmet meal delivered to the comfort of your room, anytime.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-spa',
+            title: 'Luxurious Spa & Wellness',
+            description: 'Indulge in a world of relaxation and rejuvenation with our extensive spa treatments, saunas, and personalized wellness programs.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-dumbbell',
+            title: 'State-of-the-Art Fitness Center',
+            description: 'Maintain your routine in our modern fitness center, equipped with the latest machines and offering personal training sessions.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-car-side',
+            title: 'Premium Valet & Parking',
+            description: 'Enjoy seamless arrivals and departures with our complimentary valet parking, ensuring convenience throughout your stay.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-plane-departure',
+            title: 'Exclusive Airport Transfers',
+            description: 'Travel in ultimate comfort with our luxury airport transfer service, available for stress-free journeys to and from the hotel.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-wifi',
+            title: 'High-Speed Wi-Fi Access',
+            description: 'Stay connected with complimentary high-speed Wi-Fi available throughout the hotel, perfect for business or leisure.',
+            link: '#'
+        },
+        {
+            iconClass: 'fas fa-child',
+            title: 'Kids Club & Activities',
+            description: 'Our supervised Kids Club offers a vibrant array of activities and entertainment, ensuring a fun and engaging experience for younger guests.',
+            link: '#'
+        }
+    ];
 
-        // Render services
-        function renderServices() {
-            const servicesGrid = document.getElementById('servicesGrid');
-            
-            services.forEach(service => {
-                const serviceCard = document.createElement('div');
-                serviceCard.className = 'service-card';
-                
-                serviceCard.innerHTML = `
-                    <span class="service-icon">${service.icon}</span>
+    const servicesGrid = document.getElementById('servicesGrid');
+
+    // Check if the servicesGrid element exists to prevent errors
+    if (servicesGrid) {
+        // Loop through the services array and create HTML for each
+        services.forEach(service => {
+            const serviceCardHTML = `
+                <div class="service-card">
+                    <div class="service-icon-wrapper">
+                        <i class="${service.iconClass} service-icon"></i>
+                    </div>
                     <h3 class="service-title">${service.title}</h3>
                     <p class="service-description">${service.description}</p>
-                    <ul class="service-features">
-                        ${service.features.map(feature => `
-                            <li>
-                                <span class="feature-dot"></span>
-                                ${feature}
-                            </li>
-                        `).join('')}
-                    </ul>
-                    <button class="learn-more-btn" onclick="learnMore('${service.title}')">Learn More</button>
-                `;
-                
-                servicesGrid.appendChild(serviceCard);
-            });
-        }
-
-        // Learn more function
-        function learnMore(serviceTitle) {
-            alert(`More information about ${serviceTitle} - Contact our concierge for details!`);
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderServices();
-            
-            // Navigation active state
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
+                    <a href="${service.link}" class="btn btn-secondary learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+            servicesGrid.insertAdjacentHTML('beforeend', serviceCardHTML);
         });
+    } else {
+        console.error('Element with ID "servicesGrid" not found. Services cannot be populated.');
+    }
+});

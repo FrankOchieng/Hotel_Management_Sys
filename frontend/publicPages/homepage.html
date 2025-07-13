@@ -4,17 +4,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DELTA HOTEL</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="global.css">
         <link rel="stylesheet" href="homepage.css">
     </head>
     <body>
         <nav>
-            <div class="nav-container" position="fixed" display="fixed">
+            <div class="nav-container">
                 <a href="homepage.html" class="logo">Delta<span>Stay</span></a>
-                <ul class="nav-links">
-                    <li><a href="homepage.html" class="active">Home</a></li>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links" id="navLinks"> <li><a href="homepage.html" class="active">Home</a></li>
                     <li><a href="roomsPage.html">Rooms</a></li>
                     <li><a href="servicePage.html">Services</a></li>
-                    <li><a href="bookings.html">Bookings</a></li>
                     <li><a href="loginPage.html">Login</a></li>
                     <li><a href="contacts.html">Contact Us</a></li>
                 </ul>
@@ -57,7 +64,6 @@
             </section>
         </main>
 
+        <script src="homepage.js"></script>
     </body>
-    <script href="homepage.js">  
-    </script>
 </html>

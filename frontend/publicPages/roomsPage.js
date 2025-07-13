@@ -71,9 +71,6 @@
         // Book room function
         function bookRoom(roomName) {
             alert(`Booking request for ${roomName} - Redirecting to booking system...`);
-            if (confirm('Do you want to proceed to the booking page?')) {
-                window.location.href = 'bookings.html'; // Redirect to booking page
-            }
         }
 
         // Initialize page

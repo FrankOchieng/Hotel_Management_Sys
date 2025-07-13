@@ -437,7 +437,7 @@ def generate_reports(report_type):
                 "top_customers_by_bookings": customer_booking_patterns,
                 "most_booked_room_types": room_type_popularity
             }
-
+ 
         else:
             return jsonify({"error": "Invalid report type"}), 400
 

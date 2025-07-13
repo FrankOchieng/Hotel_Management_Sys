@@ -12,7 +12,7 @@
             alert('Login successful! Welcome back to LuxeStay.');
             
             // Redirect to home page
-            window.location.href = 'index.html';
+            window.location.href = 'customerDshboard.html';
         });
 
         // Social login

@@ -1,3 +1,4 @@
+"""
 -- Table: rooms (from rooms.sql)
 -- id int auto_increment primary key not null,
 -- room_no varchar (10) unique not null,
@@ -49,6 +50,8 @@ WHERE room_no = '101';
 DELETE FROM rooms
 WHERE room_no = '101';
 ```python
+"""
+
 import mysql.connector
 
 db_config = {

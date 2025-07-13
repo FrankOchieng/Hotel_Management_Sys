@@ -48,9 +48,22 @@
     border-radius: 12px; /* Slightly more rounded corners */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+.contact-item {
+    background-color: var(--color-neutral-stone);
+    padding: 35px; /* More internal padding */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+}
+
+.contact-item:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
     text-align: center;
 }
 
@@ -64,8 +77,15 @@
     color: var(--color-secondary-warm); /* Use your warm accent color */
     margin-bottom: 25px; /* More space below icon */
     transition: color 0.3s ease;
+.contact-item i { /* Styling for Font Awesome icons */
+    font-size: 3.2em; /* Larger icons */
+    color: var(--color-secondary-warm); /* Use your warm accent color */
+    margin-bottom: 25px; /* More space below icon */
+    transition: color 0.3s ease;
 }
 
+.contact-item:hover i {
+    color: var(--color-accent-maroon); /* Icon color changes on hover */
 .contact-item:hover i {
     color: var(--color-accent-maroon); /* Icon color changes on hover */
 }
@@ -83,8 +103,23 @@
     color: var(--color-dark-text);
     line-height: 1.6;
     margin-bottom: 5px;
+.contact-item h3 {
+    font-family: var(--font-serif);
+    font-size: 1.7em;
+    color: var(--color-accent-maroon);
+    margin-bottom: 12px;
 }
 
+.contact-item p {
+    font-family: var(--font-sans-serif);
+    font-size: 1.05em; /* Slightly larger paragraph text */
+    color: var(--color-dark-text);
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.contact-item a {
+    color: var(--color-accent-maroon);
 .contact-item a {
     color: var(--color-accent-maroon);
     text-decoration: none;
@@ -101,10 +136,29 @@
 .contact-form-section {
     padding: 70px 20px; /* More padding */
     background-color: var(--color-secondary-warm); /* Different background for form */
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-item a:hover {
+    color: var(--color-secondary-warm);
+    text-decoration: underline; /* Underline on hover for links */
+}
+
+/* --- Contact Form Section --- */
+.contact-form-section {
+    padding: 70px 20px; /* More padding */
+    background-color: var(--color-secondary-warm); /* Different background for form */
     text-align: center;
+    margin-bottom: 70px; /* More space below */
     margin-bottom: 70px; /* More space below */
 }
 
+.contact-form-section h2 {
+    font-family: var(--font-serif);
+    font-size: 3em; /* Slightly larger heading */
+    color: var(--color-primary-background);
+    margin-bottom: 45px; /* More space below heading */
 .contact-form-section h2 {
     font-family: var(--font-serif);
     font-size: 3em; /* Slightly larger heading */
@@ -124,8 +178,21 @@
 .form-group {
     margin-bottom: 30px; /* More space between form groups */
     text-align: left;
+.contact-form-design {
+    max-width: 750px; /* Wider form container */
+    margin: 0 auto;
+    background-color: var(--color-primary-background);
+    padding: 50px; /* More internal padding for the form */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow */
 }
 
+.form-group {
+    margin-bottom: 30px; /* More space between form groups */
+    text-align: left;
+}
+
+.form-group label {
 .form-group label {
     display: block;
     font-family: var(--font-sans-serif);

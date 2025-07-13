@@ -1,3 +1,4 @@
+"""
 -- Table: bookings (from booking.sql)
 -- id int auto_increment primary key not null,
 -- guest_name varchar(50) not null,
@@ -91,6 +92,8 @@ SET booking_status = 'checked_in'
 WHERE id = 1; -- Replace 1 with actual booking ID
 
 ```python
+"""
+
 import mysql.connector
 from datetime import datetime
 
@@ -128,48 +131,52 @@ def execute_sql(sql_query, params=None, fetch=False):
 # --- Examples using the helper ---
 
 # INSERT Example
-print("\n--- Bookings INSERT ---")
-insert_sql = """
-INSERT INTO bookings (
-    guest_name, id_number, room_no, booking_status,
-    checkin_date, checkin_time, checkout_date, checkout_time,
-    total_nights, room_charges, services_offered, service_charge,
-    total_charges, payment_method, payment_status, payment_date
-) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-"""
-booking_params = (
-    'Bob Johnson', 789012, '102', 'pending',
-    '2025-09-01', '14:00', '2025-09-03', '11:00',
-    2, 300.00, 'Room Service', 30.00,
-    330.00, 'card', 'pending', datetime.now().strftime('%Y-%m-%d')
-)
-booking_id = execute_sql(insert_sql, booking_params)
-if booking_id:
-    print(f"Booking inserted with ID: {booking_id}")
+def booking():
+    print("\n--- Bookings INSERT ---")
+    insert_sql = """
+    INSERT INTO bookings (
+        guest_name, id_number, room_no, booking_status,
+        checkin_date, checkout_date,
+        total_nights, room_charges, services_offered, service_charge,
+        total_charges, payment_method, payment_status, payment_date
+    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
+    """
+    booking_params = (
+        'Bob Johnson', 789012, '102', 'pending',
+        '2025-09-01', '14:00', '2025-09-03', '11:00',
+        2, 300.00, 'Room Service', 30.00,
+        330.00, 'card', 'pending', datetime.now().strftime('%Y-%m-%d')
+    )
+    booking_id = execute_sql(insert_sql, booking_params)
+    if booking_id:
+        print(f"Booking inserted with ID: {booking_id}")
 
-# SELECT Example (Get Booking Details)
-print("\n--- Bookings SELECT ---")
-select_sql = "SELECT * FROM bookings WHERE id = %s"
-booking_data = execute_sql(select_sql, (booking_id,), fetch=True)
-if booking_data:
-    print("Found booking:", booking_data[0])
+    # SELECT Example (Get Booking Details)
+def bookingDetails():
+    print("\n--- Bookings SELECT ---")
+    select_sql = "SELECT * FROM bookings WHERE id = %s"
+    booking_data = execute_sql(select_sql, (booking,), fetch=True)
+    if booking_data:
+        print("Found booking:", booking_data[0])
 
 # UPDATE Example (Modify Booking)
-print("\n--- Bookings UPDATE (Modify) ---")
-update_sql = """
-UPDATE bookings
-SET
-    checkin_date = %s,
-    checkout_date = %s,
-    total_nights = %s,
-    total_charges = %s
-WHERE id = %s
-"""
-execute_sql(update_sql, ('2025-09-05', '2025-09-07', 2, 350.00, booking_id))
-print("Booking modified.")
+def changePlan():
+    print("\n--- Bookings UPDATE (Modify) ---")
+    update_sql = """
+    UPDATE bookings
+    SET
+        checkin_date = %s,
+        checkout_date = %s,
+        total_nights = %s,
+        total_charges = %s
+    WHERE id = %s
+    """
+    execute_sql(update_sql, ('2025-09-05', '2025-09-07', 2, 350.00, booking_id))
+    print("Booking modified.")
 
 # UPDATE Example (Cancel Booking)
-print("\n--- Bookings UPDATE (Cancel) ---")
-cancel_sql = "UPDATE bookings SET booking_status = %s, payment_status = %s WHERE id = %s"
-execute_sql(cancel_sql, ('cancelled', 'refunded', booking_id))
-print("Booking cancelled and payment status updated.")
+def cancelBooking():
+    print("\n--- Bookings UPDATE (Cancel) ---")
+    cancel_sql = "UPDATE bookings SET booking_status = %s, payment_status = %s WHERE id = %s"
+    execute_sql(cancel_sql, ('cancelled', 'refunded', booking_id))
+    print("Booking cancelled and payment status updated.")

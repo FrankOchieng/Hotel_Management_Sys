@@ -1,4 +1,4 @@
-# utils.py
+# utils.py 
 
 from flask_mail import Message
 from flask_login import current_user

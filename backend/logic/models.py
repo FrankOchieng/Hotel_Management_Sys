@@ -1,4 +1,4 @@
-# models.py
+# models.py 
 
 import uuid
 from datetime import datetime
@@ -114,7 +114,7 @@ class Booking(db.Model):
     booking_status = Column(ENUM(BookingStatus), default=BookingStatus.PENDING, nullable=False)
     payment_status = Column(ENUM(PaymentStatus), default=PaymentStatus.PENDING, nullable=False)
     special_requests = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now(datetime.timezone.utc))
 
     user = relationship('User', back_populates='bookings')
     room = relationship('Room', back_populates='bookings')

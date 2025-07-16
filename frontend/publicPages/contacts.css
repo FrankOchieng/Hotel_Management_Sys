@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    background: #690ae6;
-}
- 
-nav {
-    background: #222;
-    color: #fff;
-    padding: 0.5em 0;
-=======
 /* contacts.css */
 
 /* --- Page Header/Hero Section --- */
@@ -28,7 +16,6 @@ nav {
     margin-bottom: 15px;
     line-height: 1.2;
     letter-spacing: -0.02em; /* Subtle kerning for headings */
->>>>>>> 84b14159 (Frontend new look-public pages)
 }
 
 .contact-hero-content p {
@@ -128,19 +115,6 @@ nav {
 .contact-form-design {
     max-width: 750px; /* Wider form container */
     margin: 0 auto;
-<<<<<<< HEAD
-}
-
-.contact-form{
-    transform: rotateX('angle');
-    transition: ease-in-out;
-}
-
-.sms{
-    transition: ease-in-out;
-    box-shadow: #eab308;
-    transition-duration: 5s;
-=======
     background-color: var(--color-primary-background);
     padding: 50px; /* More internal padding for the form */
     border-radius: 12px; /* Slightly more rounded corners */
@@ -349,5 +323,4 @@ nav {
     .map-container iframe {
         height: 250px;
     }
->>>>>>> 84b14159 (Frontend new look-public pages)
 }

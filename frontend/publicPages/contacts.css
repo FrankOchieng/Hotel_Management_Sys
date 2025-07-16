@@ -175,9 +175,201 @@
     padding: 0 0 70px 0; /* More bottom padding */
     text-align: center;
     max-width: 1200px;
+    font-family: var(--font-sans-serif);
+    font-size: 1.15em; /* Larger label font */
+    color: var(--color-dark-text);
+    margin-bottom: 10px; /* More space below label */
+    font-weight: 600; /* Slightly bolder labels */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 14px 12px; /* More padding for inputs */
+    border: 1px solid var(--color-neutral-stone);
+    border-radius: 6px; /* Slightly more rounded input fields */
+    font-family: var(--font-sans-serif);
+    font-size: 1.05em; /* Consistent font size */
+    color: var(--color-dark-text);
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--color-accent-maroon);
+    box-shadow: 0 0 0 4px rgba(75, 0, 0, 0.25); /* More prominent glow */
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px; /* Taller textarea */
+}
+
+.contact-form-design .btn {
+    margin-top: 30px; /* More space above button */
+    padding: 16px 45px; /* Larger button */
+    font-size: 1.15em; /* Larger button font */
+    letter-spacing: 0.05em; /* Subtle letter spacing for button text */
+    text-transform: uppercase; /* Uppercase for buttons */
+}
+
+/* --- Map Section --- */
+.map-section {
+    padding: 0 0 70px 0; /* More bottom padding */
+    text-align: center;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+.map-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8em; /* Consistent heading size */
+    color: var(--color-accent-maroon);
+    margin-bottom: 45px; /* More space below map heading */
+}
+
+.map-container {
+    border: 2px solid var(--color-neutral-stone); /* Slightly thicker border */
+    border-radius: 12px; /* More rounded map container */
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 500px; /* Taller map for better visibility */
+    display: block;
+}
+
+/* --- Responsive Adjustments for contacts.css --- */
+@media (max-width: 768px) {
+    .contact-hero {
+        padding: 70px 20px;
+    }
+
+    .contact-hero-content h1 {
+        font-size: 2.8em;
+    }
+
+    .contact-hero-content p {
+        font-size: 1.1em;
+    }
+
+    .details-container {
+        grid-template-columns: 1fr; /* Stack contact items vertically */
+        gap: 30px; /* Adjust gap for vertical stacking */
+    }
+
+    .contact-item {
+        padding: 30px;
+    }
+
+    .contact-item i {
+        font-size: 2.8em; /* Slightly smaller icons on mobile */
+        margin-bottom: 20px;
+    }
+
+    .contact-item h3 {
+        font-size: 1.5em;
+    }
+
+    .contact-item p {
+        font-size: 0.95em;
+    }
+
+    .contact-form-section {
+        padding: 50px 20px;
+    }
+
+    .contact-form-section h2 {
+        font-size: 2.4em;
+        margin-bottom: 35px;
+    }
+
+    .contact-form-design {
+        padding: 35px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        font-size: 1.05em;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        padding: 12px 10px;
+        width: calc(100% - 20px);
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .contact-form-design .btn {
+        padding: 14px 35px;
+        font-size: 1.05em;
+    }
+
+    .map-section {
+        padding-bottom: 50px;
+    }
+
+    .map-section h2 {
+        font-size: 2.2em;
+        margin-bottom: 35px;
+    }
+
+    .map-container iframe {
+        height: 350px; /* Adjust map height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-hero {
+        padding: 50px 15px;
+    }
+    .contact-hero-content h1 {
+        font-size: 2.2em;
+    }
+    .contact-details-section,
+    .contact-form-section,
+    .map-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .contact-item {
+        padding: 25px;
+    }
+    .contact-item i {
+        font-size: 2.5em;
+    }
+    .contact-form-section h2 {
+        font-size: 2em;
+    }
+    .contact-form-design {
+        padding: 25px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group input, .form-group textarea {
+        font-size: 0.95em;
+    }
+    .contact-form-design .btn {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+    .map-container iframe {
+        height: 250px;
+    }
 .map-section h2 {
     font-family: var(--font-serif);
     font-size: 2.8em; /* Consistent heading size */

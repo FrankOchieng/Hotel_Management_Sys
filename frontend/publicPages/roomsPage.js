@@ -1,4 +1,5 @@
   // Room data
+        /*
         const rooms = [
             {
                 id: 1,
@@ -29,6 +30,7 @@
                 description: 'Ultimate luxury with panoramic city views and exclusive amenities.'
             }
         ];
+        
 
         // Render rooms
         function renderRooms() {
@@ -67,6 +69,10 @@
                 roomsGrid.appendChild(roomCard);
             });
         }
+            */
+           fetch('/api/rooms')
+            .then(response => response.json())
+            .then(rooms => {
 
         // Book room function
         function bookRoom(roomName) {

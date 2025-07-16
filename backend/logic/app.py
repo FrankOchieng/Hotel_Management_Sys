@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
 from config import Config
-from models import db, User # Import db and User model
+from models import db, User,  Room# Import db and User model
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -46,6 +46,11 @@ def index():
     Basic route for the homepage.
     """
     return jsonify({"message": "Welcome to the Hotel Booking API!"})
+
+@app.route('/api/rooms', methods=['GET'])
+def get_rooms():
+    rooms = db.session.query(Room).all()
+    return jsonify([room.to_dict() for room in rooms])
 
 if __name__ == '__main__':
     # Create database tables if they don't exist

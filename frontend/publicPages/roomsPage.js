@@ -204,4 +204,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     console.log("Rooms Page JS Loaded and Rooms Rendered.");
-});

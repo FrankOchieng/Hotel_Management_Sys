@@ -1,5 +1,7 @@
 from models import RoomType, RoomStatus, Room, db
+from flask import Blueprint
 
+rooms_bp = Blueprint('rooms', __name__)
 def get_available_rooms(room_type=None, capacity=None):
     """
     Function to get available rooms based on room type and capacity.

@@ -5,12 +5,13 @@ from flask_login import current_user
 from functools import wraps
 from flask import jsonify
 from models import UserRole, Room, Service
-from app import mail # Import  the mail instance from app.py
+#from app import mail # Import  the mail instance from app.py
 
 def send_email(to_email, subject, body):
     """
     Helper function to send emails.
     """
+    from app import mail # Import the mail instance here to avoid circular imports
     try:
         msg = Message(subject, recipients=[to_email])
         msg.body = body

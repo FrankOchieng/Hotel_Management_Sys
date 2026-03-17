@@ -1,13 +1,21 @@
 # models.py 
 
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from enum import Enum
 from sqlalchemy import Column, String, Integer, DateTime, Boolean, ForeignKey, JSON, Text, Enum as SAEnum, DECIMAL as Decimal
 from sqlalchemy.orm import relationship
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 db = SQLAlchemy()
+
+# Define East Africa Time (UTC+3)
+EAT = timezone(timedelta(hours=3))
+
+def get_eat_time():
+    """Returns the current time in EAT."""
+    return datetime.now(EAT)
 
 # Define Enums for various fields 
 class UserRole(Enum):
@@ -54,22 +62,25 @@ class ReportType(Enum):
     OCCUPANCY = 'occupancy'
     CUSTOMER = 'customer'
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String(120), unique=True, nullable=False)
     password_hash = Column(String(128), nullable=False)
     first_name = Column(String(80), nullable=False)
     last_name = Column(String(80), nullable=False)
     phone = Column(String(20), nullable=True)
     role = Column(SAEnum(UserRole), default=UserRole.CUSTOMER, nullable=False)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=get_eat_time)
 
     bookings = relationship('Booking', back_populates='user')
 
+    # Flask-Login requires the ID to be a string for session cookies
+    def get_id(self):
+        return str(self.id)
+
     def __repr__(self):
         return f'<User {self.email}>'
-
 class Room(db.Model):
     __tablename__ = 'rooms'
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -108,7 +119,7 @@ class Service(db.Model):
     price = Column(Decimal(10, 2), nullable=False)
     category = Column(SAEnum(ServiceCategory), nullable=False)
     availability = Column(Boolean, default=True, nullable=False)
-
+    image_url = Column(String(255), nullable=True)
     booking_services = relationship('BookingService', back_populates='service')
 
     def __repr__(self):
@@ -117,7 +128,8 @@ class Service(db.Model):
 class Booking(db.Model):
     __tablename__ = 'bookings'
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
-    user_id = Column(String(36), ForeignKey('users.id'), nullable=False)
+    # Fixed: Matches the new Integer ID from the Users table
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     room_id = Column(String(36), ForeignKey('rooms.id'), nullable=False)
     check_in_date = Column(DateTime, nullable=False)
     check_out_date = Column(DateTime, nullable=False)
@@ -126,7 +138,8 @@ class Booking(db.Model):
     booking_status = Column(SAEnum(BookingStatus), default=BookingStatus.PENDING, nullable=False)
     payment_status = Column(SAEnum(PaymentStatus), default=PaymentStatus.PENDING, nullable=False)
     special_requests = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    # Fixed: Uses EAT time
+    created_at = Column(DateTime, default=get_eat_time)
 
     user = relationship('User', back_populates='bookings')
     room = relationship('Room', back_populates='bookings')
@@ -158,7 +171,8 @@ class Payment(db.Model):
     payment_method = Column(SAEnum(PaymentMethod), nullable=False)
     payment_status = Column(SAEnum(PaymentStatus), default=PaymentStatus.PENDING, nullable=False)
     stripe_payment_id = Column(String(255), nullable=True) 
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    # Fixed: Uses EAT time
+    created_at = Column(DateTime, default=get_eat_time)
 
     booking = relationship('Booking', back_populates='payments')
 

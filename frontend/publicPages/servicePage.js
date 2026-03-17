@@ -1,75 +1,67 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Array to hold your service data
-    const services = [
-        {
-            iconClass: 'fas fa-concierge-bell',
-            title: '24/7 Concierge Service',
-            description: 'Our dedicated concierge team is available around the clock to assist with any request, from dining reservations to bespoke experiences.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-utensils',
-            title: 'Gourmet Dining & Room Service',
-            description: 'Savor exquisite culinary delights at our signature restaurants or enjoy a gourmet meal delivered to the comfort of your room, anytime.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-spa',
-            title: 'Luxurious Spa & Wellness',
-            description: 'Indulge in a world of relaxation and rejuvenation with our extensive spa treatments, saunas, and personalized wellness programs.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-dumbbell',
-            title: 'State-of-the-Art Fitness Center',
-            description: 'Maintain your routine in our modern fitness center, equipped with the latest machines and offering personal training sessions.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-car-side',
-            title: 'Premium Valet & Parking',
-            description: 'Enjoy seamless arrivals and departures with our complimentary valet parking, ensuring convenience throughout your stay.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-plane-departure',
-            title: 'Exclusive Airport Transfers',
-            description: 'Travel in ultimate comfort with our luxury airport transfer service, available for stress-free journeys to and from the hotel.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-wifi',
-            title: 'High-Speed Wi-Fi Access',
-            description: 'Stay connected with complimentary high-speed Wi-Fi available throughout the hotel, perfect for business or leisure.',
-            link: '#'
-        },
-        {
-            iconClass: 'fas fa-child',
-            title: 'Kids Club & Activities',
-            description: 'Our supervised Kids Club offers a vibrant array of activities and entertainment, ensuring a fun and engaging experience for younger guests.',
-            link: '#'
-        }
-    ];
+const API_BASE_URL = 'http://localhost:5000';
 
+document.addEventListener('DOMContentLoaded', () => {
     const servicesGrid = document.getElementById('servicesGrid');
 
-    // Check if the servicesGrid element exists to prevent errors
-    if (servicesGrid) {
-        // Loop through the services array and create HTML for each
-        services.forEach(service => {
-            const serviceCardHTML = `
-                <div class="service-card">
-                    <div class="service-icon-wrapper">
-                        <i class="${service.iconClass} service-icon"></i>
+    if (!servicesGrid) return;
+
+    // --- NEW: Tailwind Responsive Grid Classes ---
+    // grid-cols-1 = Mobile (1 column)
+    // md:grid-cols-2 = Tablet (2 columns)
+    // lg:grid-cols-3 = Laptop/Desktop (3 columns)
+    servicesGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8';
+
+    fetch(`${API_BASE_URL}/services`)
+        .then(res => {
+            if (!res.ok) throw new Error("Failed to fetch");
+            return res.json();
+        })
+        .then(services => {
+            servicesGrid.innerHTML = ''; 
+
+            if (services.length === 0) {
+                servicesGrid.innerHTML = '<p class="text-gray-500 text-center col-span-full">No services available right now.</p>';
+                return;
+            }
+
+            services.forEach(service => {
+                const card = document.createElement('div');
+                // Removed the old padding from the wrapper so the image goes edge-to-edge
+                card.className = 'bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col h-full overflow-hidden hover:shadow-xl transition-shadow duration-300';
+                
+                // Fallback image in case the database doesn't have one
+                const imageUrl = service.image_url || './images/deluxe2.jpeg';
+
+                card.innerHTML = `
+                    <img src="${imageUrl}" alt="${service.name}" class="w-full h-48 object-cover">
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="mb-3 flex justify-between items-center">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full uppercase tracking-wide font-bold">${service.category}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">${service.name}</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">${service.description || 'Experience our premium amenities.'}</p>
+                        
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                            <span class="text-2xl font-black text-gray-900">$${service.price}</span>
+                            <button onclick="bookService('${service.id}', '${service.name}')" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm">
+                                Book Service
+                            </button>
+                        </div>
                     </div>
-                    <h3 class="service-title">${service.title}</h3>
-                    <p class="service-description">${service.description}</p>
-                    <a href="${service.link}" class="btn btn-secondary learn-more-btn">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            `;
-            servicesGrid.insertAdjacentHTML('beforeend', serviceCardHTML);
+                `;
+                servicesGrid.appendChild(card);
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            servicesGrid.innerHTML = '<p class="text-red-500 text-center col-span-full py-10">Failed to load services. Please check connection.</p>';
         });
-    } else {
-        console.error('Element with ID "servicesGrid" not found. Services cannot be populated.');
-    }
 });
+
+function bookService(id, name) {
+    if(confirm(`Would you like to head to the bookings page to add "${name}" to your stay?`)) {
+        localStorage.setItem('selected_service_id', id);
+        window.location.href = 'bookings.html';
+    }
+}

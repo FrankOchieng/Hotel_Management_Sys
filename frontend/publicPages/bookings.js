@@ -246,6 +246,27 @@
             }
         });
 
+        setTimeout(() => {
+            const savedRoomId = localStorage.getItem('selected_room_id');
+            if (savedRoomId) {
+                const roomInput = document.getElementById('create-room-id');
+                if (roomInput) {
+                    roomInput.value = savedRoomId;
+                    // Flash it green so the user knows it worked
+                    roomInput.style.borderColor = '#22c55e'; 
+                    roomInput.style.borderWidth = '2px';
+                    setTimeout(() => {
+                        roomInput.style.borderColor = ''; 
+                        roomInput.style.borderWidth = '';
+                    }, 2000);
+                    // Clear it so it doesn't stick forever
+                    localStorage.removeItem('selected_room_id'); 
+                } else {
+                    console.error("Autofill failed: Could not find 'create-room-id' in the HTML.");
+                }
+            }
+        }, 300);
+        
         async function viewBookingDetails(bookingId) {
             openModal('bookingDetailsModal');
             const detailsContent = document.getElementById('booking-details-content');

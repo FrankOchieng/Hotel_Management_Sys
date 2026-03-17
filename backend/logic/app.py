@@ -9,7 +9,7 @@ from flask_talisman import Talisman
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from config import Config
-from models import db, User, Room
+from models import db, User, Room, Service
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -17,7 +17,8 @@ app.config.from_object(Config)
 
 # --- SECURITY FEATURES ---
 # 1. CORS: Restrict cross-origin resource sharing to your specific frontend domains
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5000"}})
+#CORS(app, resources={r"/api/*": {"origins": "http://localhost:5000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 2. Talisman: Force HTTPS and set strict HTTP security headers
 csp = {
@@ -47,8 +48,8 @@ login_manager.login_view = 'auth.login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(user_id)
-
+    # Cast the session cookie string back to an integer for the DB query
+    return User.query.get(int(user_id))
 # Import and register blueprints
 from authSys import auth_bp
 from roomMngt import rooms_bp
@@ -74,6 +75,26 @@ def get_rooms():
     rooms = db.session.query(Room).all()
     return jsonify([room.to_dict() for room in rooms])
 
+@app.route('/services', methods=['GET'])
+def get_services():
+    """Fetch all premium services from the database."""
+    try:
+        services = db.session.query(Service).all()
+        services_list = []
+        for s in services:
+            services_list.append({
+                "id": s.id,
+                "name": s.name,
+                "description": s.description,
+                "price": float(s.price),
+                "image_url": s.image_url,
+                "category": s.category.value if s.category else "premium"
+            })
+        return jsonify(services_list), 200
+    except Exception as e:
+        print(f"Error fetching services: {e}")
+        return jsonify({"error": "Failed to load services."}), 500
+    
 @app.errorhandler(429)
 def ratelimit_handler(e):
     return jsonify({"error": "Rate limit exceeded. Try again later."}), 429

@@ -3,93 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms - LuxeStay</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="roomsPage.css">
-    <link rel="stylesheet" href="footer.css">
+    <title>Our Rooms - LuxeStay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="homepage.html" class="logo">Luxe<span>Stay</span></a>
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="roomsPage.html" class="active">Rooms</a></li>
-                <li><a href="servicePage.html">Services</a></li>
-                <li><a href="contacts.html">Contact</a></li>
-                <li><a href="loginPage.html">Login</a></li>
-            </ul>
-        </div>
-    </nav>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen">
 
-    <main class="main-content">
-        <section class="rooms-hero-section">
-            <div class="rooms-hero-content container">
-                <h1 class="rooms-hero-title">Your Sanctuary of Unrivaled Luxury</h1>
-                <p class="rooms-hero-description">Immerse yourself in a world where exquisite design meets unparalleled comfort. Each room and suite at LuxeStay is a testament to refined living, crafted for your ultimate repose.</p>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-900 tracking-tight">LuxeStay</h1>
+            <nav class="hidden md:flex space-x-8 nav-links">
+                <a href="homepage.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="roomsPage.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium active">Rooms</a>
+                <a href="servicePage.html" class="text-blue-600 px-3 py-2 rounded-md text-sm font-medium active">Services</a>
+                <a href="bookings.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Bookings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-16">
+            <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Accommodations</h2>
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Find Your Perfect Stay
+            </p>
+        </div>
+
+        <div id="roomShowcaseContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="col-span-full text-center py-10">
+                <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-500"></i>
+                <p class="mt-4 text-gray-500">Loading available rooms...</p>
             </div>
-        </section>
-        <section class="room-showcase-container" id="roomShowcaseContainer">
-            </section>
+        </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <a href="homepage.html" class="logo">Luxe<span>Stay</span></a>
-                <p>Experience unparalleled luxury and comfort at LuxeStay, where every detail is crafted for your perfect escape.</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="homepage.html">Home</a></li>
-                    <li><a href="roomsPage.html">Rooms</a></li>
-                    <li><a href="servicePage.html">Services</a></li>
-                    <li><a href="contacts.html">Contact Us</a></li>
-                    <li><a href="loginPage.html">Login</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>123 Luxury Lane, Metropolis, ML 12345</p>
-                <p>Phone: +1 (555) 123-4567</p>
-                <p>Email: <a href="mailto:info@luxestay.com">info@luxestay.com</a></p>
-                <p>Reservations: <a href="tel:+15559876543">+1 (555) 987-6543</a></p>
-            </div>
-
-            <div class="footer-column">
-                <h3>About LuxeStay</h3>
-                <p>Committed to providing an exceptional stay, we blend classic elegance with modern amenities for an unforgettable experience.</p>
-                <p>Your comfort, our priority.</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            &copy; <span id="currentYear"></span> LuxeStay Hotel. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-        </div>
-    </footer>
-
-    <script src="homepage.js"></script>
-    <script src="loadFooter.js"></script>
-    <script src="roomsPage.js"></script> </body>
+    <script src="roomsPage.js"></script>
+    <script src="globalAuth.js"></script>
+</body>
 </html>

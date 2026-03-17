@@ -1,48 +1,50 @@
-// Form submission
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+const API_BASE_URL = 'http://localhost:5000'; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('registerForm');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const terms = document.getElementById('terms').checked;
+            const submitBtn = registerForm.querySelector('button[type="submit"]');
             
-            // Password validation
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-            
-            if (!terms) {
-                alert('Please agree to the Terms of Service and Privacy Policy');
-                return;
-            }
-            
-            console.log('Registration attempt:', { firstName, lastName, email, password, terms });
-            
-            // Simulate registration process
-            alert('Registration successful! Welcome to LuxeStay.');
-            
-            // Redirect to login page
-            window.location.href = 'loginPage.html';
-        });
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Creating Account...';
+            submitBtn.disabled = true;
 
-        // Social signup
-        function socialSignup(provider) {
-            alert(`${provider} signup selected - Integration would happen here`);
-        }
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        password: password,
+                        phone: '' 
+                    })
+                });
 
-        // Navigation active state
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'homePage.html';
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert('Registration successful! Please log in.');
+                    window.location.href = 'loginPage.html'; 
+                } else {
+                    alert(`Registration failed: ${data.error || 'Check your details and try again.'}`);
                 }
-            });
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Connection error. Ensure the backend server is running.');
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
         });
+    }
+});

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login / Register</title>
+        <title>My Bookings - LuxeStay</title>
         <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <!-- Inter Font -->
@@ -25,58 +25,66 @@
             </nav>
         </div>
     </header>
+<main class="flex-grow container py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">My Bookings</h2>
 
-    <main class="flex-grow container py-8">
-        <h2 class="text-3xl font-semibold text-gray-700 mb-6">My Bookings</h2>
-
-        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h3 class="text-xl font-semibold mb-4">Create New Booking</h3>
-            <form id="create-booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">Create New Booking</h3>
+            <form id="create-booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
                 <div>
-                    <label for="create-room-id" class="block text-sm font-medium text-gray-700">Room ID</label>
-                    <input type="text" id="create-room-id" class="form-input" placeholder="e.g., 123e4567-e89b-12d3-a456-426614174000" required>
+                    <label for="create-room-id" class="block text-sm font-medium text-gray-700 mb-1">Room ID</label>
+                    <input type="text" id="create-room-id" class="block w-full px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-colors" placeholder="e.g., 123e4567..." required>
                 </div>
+                
                 <div>
-                    <label for="create-check-in-date" class="block text-sm font-medium text-gray-700">Check-in Date</label>
-                    <input type="date" id="create-check-in-date" class="form-input" required>
+                    <label for="create-check-in-date" class="block text-sm font-medium text-gray-700 mb-1">Check-in Date</label>
+                    <input type="date" id="create-check-in-date" class="block w-full px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-colors" required>
                 </div>
+                
                 <div>
-                    <label for="create-check-out-date" class="block text-sm font-medium text-gray-700">Check-out Date</label>
-                    <input type="date" id="create-check-out-date" class="form-input" required>
+                    <label for="create-check-out-date" class="block text-sm font-medium text-gray-700 mb-1">Check-out Date</label>
+                    <input type="date" id="create-check-out-date" class="block w-full px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-colors" required>
                 </div>
+                
                 <div>
-                    <label for="create-payment-method" class="block text-sm font-medium text-gray-700">Payment Method</label>
-                    <select id="create-payment-method" class="form-input" required>
-                        <option value="card">Card</option>
-                        <option value="cash">Cash</option>
+                    <label for="create-payment-method" class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+                    <select id="create-payment-method" class="block w-full px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-colors" required>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="cash">Cash on Arrival</option>
                         <option value="bank_transfer">Bank Transfer</option>
                     </select>
                 </div>
+                
                 <div class="md:col-span-2">
-                    <label for="create-special-requests" class="block text-sm font-medium text-gray-700">Special Requests (Optional)</label>
-                    <textarea id="create-special-requests" class="form-input h-24"></textarea>
+                    <label for="create-special-requests" class="block text-sm font-medium text-gray-700 mb-1">Special Requests (Optional)</label>
+                    <textarea id="create-special-requests" class="block w-full px-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-colors h-24 resize-none" placeholder="Any special requirements for your stay?"></textarea>
                 </div>
-                <div class="md:col-span-2">
-                    <h4 class="text-md font-medium text-gray-700 mb-2">Services (Optional)</h4>
-                    <div id="create-services-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <!-- Services will be loaded here dynamically -->
-                        <p>Loading services...</p>
+                
+                <div class="md:col-span-2 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                    <h4 class="text-md font-semibold text-gray-900 mb-3">Premium Services (Optional)</h4>
+                    <div id="create-services-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <p class="text-gray-500 text-sm italic">Loading available services...</p>
                     </div>
                 </div>
-                <div class="md:col-span-2 flex justify-end">
-                    <button type="submit" class="form-button">Create Booking</button>
+                
+                <div class="md:col-span-2 flex justify-end mt-2">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-lg shadow-sm transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Confirm Booking
+                    </button>
                 </div>
             </form>
-            <div id="create-booking-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
+            <div id="create-booking-message-box" class="mt-4 p-4 rounded-lg text-sm font-medium hidden"></div>
         </div>
 
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Your Existing Bookings</h3>
-        <div id="my-bookings-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <p class="text-center text-gray-500 col-span-full">Loading your bookings...</p>
+        <div class="border-t border-gray-200 pt-8 mt-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Your Existing Bookings</h3>
+            <div id="my-bookings-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <p class="text-center text-gray-500 col-span-full py-8">Loading your bookings...</p>
+            </div>
+            <div id="bookings-message-box" class="mt-4 p-4 rounded-lg text-sm font-medium hidden"></div>
         </div>
-        <div id="bookings-message-box" class="mt-4 p-3 rounded-md text-sm hidden"></div>
     </main>
-
     <footer class="bg-gray-800 text-white py-4 mt-auto">
         <div class="container text-center text-sm">
             &copy; 2025 Hotel Booking App. All rights reserved.
@@ -164,5 +172,6 @@
             </div>
         </footer>
         <script src="bookings.js"></script>
+        <script src="globalAuth.js"></script>
     </body>
 </html>
